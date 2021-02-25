@@ -1,0 +1,8 @@
+{
+  "name": "Spielstand",
+  "short_name": "Spielstand",
+  "display": "fullscreen",
+  "background_color": "#369",
+  "description": "A Scoringboard",
+  "icons": []
+}
