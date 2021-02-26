@@ -16,7 +16,7 @@ html,
 body {
   background-color: var(--primary);
   color: var(--ternary);
-  font-size: 12px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
@@ -29,6 +29,36 @@ header.main {
   justify-content: center;
 }
 h1 {
-  font-size: 2.6rem;
+  font-size: 1.8rem;
   margin: 0;
+}
+
+table {
+  border-spacing: 0;
+  margin: 60px auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+th,
+td {
+  background-color: #2e4560;
+  padding: 20px;
+  text-align: center;
+}
+th {
+  padding: 10px;
+}
+td {
+  border-top: 1px solid var(--primary);
+}
+th:not(:last-child),
+td:not(:last-child) {
+  border-right: 1px solid var(--primary);
+}
+th:first-child {
+  background-color: transparent;
+}
+tbody td:not(:first-child) {
+  background-color: #5075a5;
 }
