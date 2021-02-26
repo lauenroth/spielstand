@@ -59,6 +59,9 @@ td:not(:last-child) {
 th:first-child {
   background-color: transparent;
 }
-tbody td:not(:first-child) {
-  background-color: #5075a5;
+tbody td {
+  background-color: #496e97;
+}
+tbody tr:nth-child(2n) td {
+  background-color: #42648a;
 }
