@@ -71,11 +71,9 @@ tfoot td:not(:first-child) {
   font-family: Lato, Verdana, sans-serif;
 }
 tr.places td {
+  background-color: transparent;
   font-size: 0.8rem;
   padding: 5px;
-}
-tr.places td:first-child {
-  background-color: transparent;
 }
 tr.places td.winner {
   font-size: 1rem;
