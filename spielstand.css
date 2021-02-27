@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
   --primary: #3d5a80;
@@ -43,7 +44,7 @@ table {
 th,
 td {
   background-color: #2e4560;
-  padding: 20px;
+  padding: 20px 10px;
   text-align: center;
 }
 th {
@@ -64,4 +65,18 @@ tbody td {
 }
 tbody tr:nth-child(2n) td {
   background-color: #42648a;
+}
+tbody td:not(:first-child),
+tfoot td:not(:first-child) {
+  font-family: Lato, Verdana, sans-serif;
+}
+tr.places td {
+  font-size: 0.8rem;
+  padding: 5px;
+}
+tr.places td:first-child {
+  background-color: transparent;
+}
+tr.places td.winner {
+  font-size: 1rem;
 }
