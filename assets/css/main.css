@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Poppins&display=swap');
+
+* {
+  font-family: Poppins, sans-serif;
+}
+
+html {
+  background-color: #342C3F;
+  color: #dddfed;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn, button {
+  background-color: rgb(93, 134, 197);
+  border: none;
+  border-radius: 4px;
+  color: #dddfed;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background-color 0.25s;
+}
+
+.btn:hover, button:hover {
+  background-color: rgb(93, 134, 197, 0.8);
+}
+
+button:disabled {
+  background-color: #999;
+  color: #ccc;
+  cursor: not-allowed;
+}
