@@ -65,7 +65,7 @@ form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 62px);
   width: 100%;
 }
 

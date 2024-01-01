@@ -48,6 +48,7 @@ useHead({
 <style lang="scss" scoped>
 header.main {
   background-color: #2e2737;
+  height: 62px;
   left: 0;
   position: fixed;
   right: 0;
@@ -102,7 +103,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 62px);
+  padding-top: 62px;
 }
 
 .bg {
