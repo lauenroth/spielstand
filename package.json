@@ -15,5 +15,8 @@
     "sass": "^1.69.6",
     "vue": "^3.4.0",
     "vue-router": "^4.2.5"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }
