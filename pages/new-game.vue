@@ -2,8 +2,10 @@
   <MainLayout>
     <form @submit.prevent="onSubmit">
       <p class="type">
-        <button :class="{ selected: type === 'players' }" @click="type = 'players'">{{ $t('players') }}</button>
-        <button :class="{ selected: type === 'teams' }" @click="type = 'teams'">{{ $t('teams') }}</button>
+        <button type="button" :class="{ selected: type === 'players' }" @click="type = 'players'">
+          {{ $t('players') }}
+        </button>
+        <button type="button" :class="{ selected: type === 'teams' }" @click="type = 'teams'">{{ $t('teams') }}</button>
       </p>
 
       <template v-if="type">
@@ -26,7 +28,7 @@
             +
           </button>
         </p>
-        <button type="submit" class="btn" disabled>Start New Game</button>
+        <button type="submit" class="btn" disabled>{{ $t('startNewGame') }}</button>
       </template>
     </form>
   </MainLayout>

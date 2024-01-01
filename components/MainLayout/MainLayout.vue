@@ -132,7 +132,7 @@ aside.main {
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 22px;
     margin: 0;
     padding: 12px;
   }
@@ -154,8 +154,8 @@ aside.main {
     }
 
     button {
-      font-size: 14px;
-      padding: 4px 8px;
+      font-size: 18px;
+      padding: 6px 12px;
     }
   }
 }

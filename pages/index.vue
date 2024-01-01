@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <p class="new">
-      <NuxtLink to="/new-game" class="btn">New Game</NuxtLink>
+      <NuxtLink to="/new-game" class="btn">{{ $t('newGame') }}</NuxtLink>
     </p>
   </MainLayout>
 </template>
