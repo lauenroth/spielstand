@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import '~/assets/css/main.css';
 
-const { t, locale, locales, setLocale } = useI18n();
+const { t, setLocale } = useI18n();
 
 const showSettings = ref(false);
 
@@ -127,6 +127,7 @@ aside.main {
   background-color: #2e2737;
   bottom: 0;
   box-shadow: 0 0 10px #222;
+  max-width: 350px;
   position: fixed;
   right: -85%;
   top: 0;
@@ -140,6 +141,7 @@ aside.main {
 
   h3 {
     font-size: 22px;
+    font-weight: normal;
     margin: 0;
     padding: 12px;
   }
@@ -157,11 +159,13 @@ aside.main {
     ul {
       display: flex;
       gap: 12px;
+      justify-content: space-evenly;
       margin: 0 12px;
     }
 
     button {
       font-size: 18px;
+      min-width: 120px;
       padding: 6px 12px;
     }
   }
