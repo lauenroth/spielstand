@@ -5,15 +5,14 @@
 }
 
 html {
-  background-color: #342C3F;
+  background-color: #222;
   color: #dddfed;
 }
 
-main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+body {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 0;
 }
 
 h1 {
@@ -46,4 +45,15 @@ button:disabled {
   background-color: #999;
   color: #ccc;
   cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: #888;
+}
+
+.selected {
+  background-color: rgb(129, 108, 159);
+}
+.selected:hover {
+  background-color: rgb(129, 108, 159, 0.8);
 }
