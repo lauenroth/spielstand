@@ -35,6 +35,13 @@ const setLanguage = (lang: string) => {
 
 useHead({
   title: t('title'),
+  link: [{ rel: 'manifest', href: '/manifest.json' }],
+  meta: [
+    {
+      name: 'theme-color',
+      content: '#2e2737',
+    },
+  ],
 });
 </script>
 

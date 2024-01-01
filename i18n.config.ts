@@ -11,7 +11,7 @@ export default defineI18nConfig(() => ({
       startNewGame: 'Neues Spiel starten',
     },
     en: {
-      title: 'Score',
+      title: 'Scoring Board',
       language: 'Language',
       players: 'Players',
       teams: 'Teams',
