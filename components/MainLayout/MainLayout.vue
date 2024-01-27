@@ -1,7 +1,7 @@
 <template>
   <header class="main">
     <h1>
-      <NuxtLink to="/">{{ $t('title') }}</NuxtLink>
+      <NuxtLink to="/">{{ title ?? $t('title') }}</NuxtLink>
     </h1>
     <button @click="showSettings = true" aria-label="Menu"><span /></button>
   </header>
@@ -24,8 +24,13 @@
 <script setup lang="ts">
 import '~/assets/css/main.css';
 
-const { t, setLocale } = useI18n();
+interface MainLayoutProps {
+  title?: string;
+}
 
+defineProps<MainLayoutProps>();
+
+const { t, setLocale } = useI18n();
 const showSettings = ref(false);
 
 const setLanguage = (lang: string) => {
@@ -47,8 +52,11 @@ useHead({
 
 <style lang="scss" scoped>
 header.main {
+  align-items: center;
   background-color: #2e2737;
+  display: flex;
   height: 62px;
+  justify-content: center;
   left: 0;
   position: fixed;
   right: 0;

@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Poppins&display=swap');
 
+:root {
+  /* font-size: 62.5%;
+  line-height: 1.5; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
 * {
   font-family: Poppins, sans-serif;
 }
@@ -56,4 +70,14 @@ button:disabled:hover {
 }
 .selected:hover {
   background-color: rgb(129, 108, 159, 0.8);
+}
+
+.sr {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 0.1rem;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 0.1rem;
 }

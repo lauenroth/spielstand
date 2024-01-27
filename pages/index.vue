@@ -2,9 +2,15 @@
   <MainLayout>
     <ul class="options">
       <li>
-        <NuxtLink to="/new-game" class="btn">{{ $t('newGame') }}</NuxtLink>
+        <NuxtLink to="/custom-game" class="btn">{{ $t('newGame') }}</NuxtLink>
       </li>
-      <li><NuxtLink to="/canasta" class="btn">Canasta</NuxtLink></li>
+      <li>
+        <NuxtLink
+          to="/custom-game?type=teams&num-players=2&name=Team+1&name=Team+2&game=cumulated&gameName=Canasta"
+          class="btn"
+          >Canasta</NuxtLink
+        >
+      </li>
     </ul>
   </MainLayout>
 </template>
