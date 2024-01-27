@@ -111,7 +111,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: calc(100dvh - 62px);
+  min-height: 100dvh;
   padding-top: 62px;
 }
 
