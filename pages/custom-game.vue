@@ -55,13 +55,7 @@ const gameName = (router.currentRoute.value.query.gameName as string) ?? 'Custom
 const names = router.currentRoute.value.query.name as string[];
 const gameType = router.currentRoute.value.query.game as string;
 
-const results = ref<(number | null)[][]>([
-  // [50, 20],
-  // [40, 120],
-  // [80, 35],
-  // [30, 25],
-  // [null, 12],
-]);
+const results = ref<(number | null)[][]>([[null, null]]);
 const newScore = ref<number | null>(null);
 
 const getSum = (index: number) => results.value.reduce((sum, value) => sum + (value[index] || 0), 0);
@@ -79,7 +73,6 @@ table {
   border-spacing: 0;
   color: #2e2737;
   margin: 0.8rem 0;
-  width: calc(100% - 1.6rem);
 
   th,
   td {
@@ -90,7 +83,7 @@ table {
   .round {
     font-size: 0.8rem;
     font-weight: normal;
-    width: 4rem;
+    width: 38px;
   }
 
   tbody tr:nth-child(odd) td {
