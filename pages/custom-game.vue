@@ -13,53 +13,58 @@
       <tbody>
         <tr v-for="(result, index) in results">
           <td>{{ index + 1 }}</td>
-          <td v-for="score in result">{{ score }}</td>
+          <td v-for="(score, scoreIndex) in result">
+            <input
+              type="number"
+              value="score"
+              @change="
+                event => {
+                  results[index][scoreIndex] = Number(event.target.value);
+                  console.log(results[index]);
+                }
+              "
+            />
+          </td>
         </tr>
-        <tr>
+        <!-- <tr v-if="results.length === 0 || results[results.length - 1].every(result => result !== null)">
           <td>{{ results.length + 1 }}</td>
-          <td v-for="name in names"><button @click="showAddScore = !showAddScore">+</button></td>
-        </tr>
+          <td v-for="name in names">
+            <button @click="showAddScore = !showAddScore">+</button>
+            <input type="number" @change="event => console.log(event.target.value as number)" />
+          </td>
+        </tr> -->
       </tbody>
       <tfoot>
         <tr v-if="gameType === 'cumulated'" class="sum">
-          <td>Sum</td>
+          <td></td>
           <td v-for="(name, index) in names">{{ getSum(index) }}</td>
         </tr>
       </tfoot>
     </table>
-    {{ gameType }}
+    <button type="button" @click="results.push([null, null])">Add</button>
   </MainLayout>
-
-  <form id="add-score" :class="{ show: showAddScore }" @submit="addNewScore">
-    <p>
-      <label for="new-score">New Score</label>
-      <input type="number" id="new-score" name="new-score" v-model="newScore" autofocus />
-    </p>
-    <Button fullWidth isSubmitButton>Save Score</Button>
-  </form>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import MainLayout from '~/components/MainLayout/MainLayout.vue';
-import Button from '~/components/shared/Button.vue';
 
 const router = useRouter();
 const gameName = (router.currentRoute.value.query.gameName as string) ?? 'Custom Game';
 const names = router.currentRoute.value.query.name as string[];
 const gameType = router.currentRoute.value.query.game as string;
 
-const results = ref<number[][]>([
-  [50, 20],
-  [40, 120],
-  [80, 35],
-  [30, 25],
+const results = ref<(number | null)[][]>([
+  // [50, 20],
+  // [40, 120],
+  // [80, 35],
+  // [30, 25],
+  // [null, 12],
 ]);
-const showAddScore = ref(false);
 const newScore = ref<number | null>(null);
 
-const getSum = (index: number) => results.value.reduce((sum, value) => sum + value[index], 0);
+const getSum = (index: number) => results.value.reduce((sum, value) => sum + (value[index] || 0), 0);
 
 const addNewScore = (event: SubmitEvent) => {
   event.preventDefault();
@@ -83,6 +88,8 @@ table {
   }
 
   .round {
+    font-size: 0.8rem;
+    font-weight: normal;
     width: 4rem;
   }
 
@@ -95,35 +102,15 @@ table {
     font-weight: bold;
   }
 
+  input {
+    all: unset;
+  }
+
   button {
     all: unset;
     display: block;
     font-size: 1.4rem;
     height: 100%;
-    width: 100%;
-  }
-}
-
-#add-score {
-  background-color: #eee;
-  bottom: -20rem;
-  left: 0;
-  padding: 0.8rem;
-  position: fixed;
-  right: 0;
-  transition: bottom 0.25s;
-
-  &.show {
-    bottom: 0;
-  }
-
-  label {
-    display: block;
-    color: #2e2737;
-  }
-
-  input {
-    padding: 0.2rem 0.4rem;
     width: 100%;
   }
 }
