@@ -36,7 +36,7 @@
       </tbody>
       <tfoot>
         <tr v-if="gameType === 'cumulated'" class="sum">
-          <td></td>
+          <td>&nbsp;</td>
           <td v-for="(name, index) in names">{{ getSum(index) }}</td>
         </tr>
       </tfoot>
@@ -56,14 +56,8 @@ const names = router.currentRoute.value.query.name as string[];
 const gameType = router.currentRoute.value.query.game as string;
 
 const results = ref<(number | null)[][]>([[null, null]]);
-const newScore = ref<number | null>(null);
 
 const getSum = (index: number) => results.value.reduce((sum, value) => sum + (value[index] || 0), 0);
-
-const addNewScore = (event: SubmitEvent) => {
-  event.preventDefault();
-  console.log('add score', newScore.value);
-};
 </script>
 
 <style lang="scss" scoped>
@@ -73,6 +67,7 @@ table {
   border-spacing: 0;
   color: #2e2737;
   margin: 0.8rem 0;
+  max-width: 100%;
 
   th,
   td {
