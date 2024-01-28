@@ -14,31 +14,27 @@
         <tbody>
           <tr v-for="(result, index) in results">
             <td>{{ index + 1 }}</td>
-            <td v-for="(score, scoreIndex) in result">
+            <td v-for="(_score, scoreIndex) in result">
               <input
                 type="number"
                 value="score"
                 @change="
                   event => {
                     results[index][scoreIndex] = Number(event.target.value);
-                    console.log(results[index]);
                   }
                 "
               />
             </td>
           </tr>
-          <!-- <tr v-if="results.length === 0 || results[results.length - 1].every(result => result !== null)">
-          <td>{{ results.length + 1 }}</td>
-          <td v-for="name in names">
-            <button @click="showAddScore = !showAddScore">+</button>
-            <input type="number" @change="event => console.log(event.target.value as number)" />
-          </td>
-        </tr> -->
         </tbody>
         <tfoot>
           <tr v-if="gameType === 'cumulated'" class="sum">
             <td>&nbsp;</td>
             <td v-for="(name, index) in names">{{ getSum(index) }}</td>
+          </tr>
+          <tr class="info">
+            <td>Needed:</td>
+            <td v-for="(name, index) in names">{{ getSum(index) < 1500 ? '60' : '90' }}</td>
           </tr>
         </tfoot>
       </table>
@@ -71,7 +67,6 @@ const getSum = (index: number) => results.value.reduce((sum, value) => sum + (va
 }
 
 table {
-  background-color: #eee;
   border-radius: 0.2rem;
   border-spacing: 0;
   color: #2e2737;
@@ -80,7 +75,9 @@ table {
 
   th,
   td {
+    background-color: #eee;
     height: 2.4rem;
+    padding: 0 0.8rem;
     text-align: center;
   }
 
@@ -94,9 +91,21 @@ table {
     background-color: #ddd;
   }
 
-  .sum td {
+  tfoot td {
     border-top: 1px solid #ccc;
+  }
+
+  .sum td {
     font-weight: bold;
+  }
+
+  .info td {
+    background-color: transparent;
+    color: #eee;
+
+    &:first-child {
+      font-size: 0.8rem;
+    }
   }
 
   input {

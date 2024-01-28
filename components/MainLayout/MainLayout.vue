@@ -9,19 +9,13 @@
     <slot />
   </main>
 
-  <aside class="main" :class="{ show: showSettings }">
-    <div id="language-switcher">
-      <h3>{{ $t('language') }}</h3>
-      <ul>
-        <li><button @click="setLanguage('de')">Deutsch</button></li>
-        <li><button @click="setLanguage('en')">English</button></li>
-      </ul>
-    </div>
-  </aside>
+  <Settings :show="showSettings" @onClose="showSettings = false" />
+
   <div class="bg" @click="showSettings = false" :class="{ show: showSettings }" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
+import Settings from '../Settings/Settings.vue';
 import '~/assets/css/main.css';
 
 interface MainLayoutProps {
@@ -30,13 +24,8 @@ interface MainLayoutProps {
 
 defineProps<MainLayoutProps>();
 
-const { t, setLocale } = useI18n();
+const { t } = useI18n();
 const showSettings = ref(false);
-
-const setLanguage = (lang: string) => {
-  setLocale(lang);
-  showSettings.value = false;
-};
 
 useHead({
   title: t('title'),
@@ -130,54 +119,6 @@ main {
   &.show {
     opacity: 1;
     visibility: visible;
-  }
-}
-
-aside.main {
-  background-color: #2e2737;
-  bottom: 0;
-  box-shadow: 0 0 10px #222;
-  max-width: 350px;
-  position: fixed;
-  right: -85%;
-  top: 0;
-  transition: 0.25s;
-  width: 85%;
-  z-index: 20;
-
-  &.show {
-    right: 0;
-  }
-
-  h3 {
-    font-size: 22px;
-    font-weight: normal;
-    margin: 0;
-    padding: 12px;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  #language-switcher {
-    ul {
-      display: flex;
-      gap: 12px;
-      justify-content: space-evenly;
-      margin: 0 12px;
-    }
-
-    button {
-      font-size: 18px;
-      min-width: 120px;
-      padding: 6px 12px;
-    }
   }
 }
 </style>
