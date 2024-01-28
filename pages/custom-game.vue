@@ -1,46 +1,48 @@
 <template>
   <MainLayout :title="gameName">
-    <table>
-      <caption class="sr">
-        Current Score
-      </caption>
-      <thead>
-        <tr>
-          <th class="round">#</th>
-          <th v-for="name in names">{{ name }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(result, index) in results">
-          <td>{{ index + 1 }}</td>
-          <td v-for="(score, scoreIndex) in result">
-            <input
-              type="number"
-              value="score"
-              @change="
-                event => {
-                  results[index][scoreIndex] = Number(event.target.value);
-                  console.log(results[index]);
-                }
-              "
-            />
-          </td>
-        </tr>
-        <!-- <tr v-if="results.length === 0 || results[results.length - 1].every(result => result !== null)">
+    <div class="table-wrapper">
+      <table>
+        <caption class="sr">
+          Current Score
+        </caption>
+        <thead>
+          <tr>
+            <th class="round"></th>
+            <th v-for="name in names">{{ name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(result, index) in results">
+            <td>{{ index + 1 }}</td>
+            <td v-for="(score, scoreIndex) in result">
+              <input
+                type="number"
+                value="score"
+                @change="
+                  event => {
+                    results[index][scoreIndex] = Number(event.target.value);
+                    console.log(results[index]);
+                  }
+                "
+              />
+            </td>
+          </tr>
+          <!-- <tr v-if="results.length === 0 || results[results.length - 1].every(result => result !== null)">
           <td>{{ results.length + 1 }}</td>
           <td v-for="name in names">
             <button @click="showAddScore = !showAddScore">+</button>
             <input type="number" @change="event => console.log(event.target.value as number)" />
           </td>
         </tr> -->
-      </tbody>
-      <tfoot>
-        <tr v-if="gameType === 'cumulated'" class="sum">
-          <td>&nbsp;</td>
-          <td v-for="(name, index) in names">{{ getSum(index) }}</td>
-        </tr>
-      </tfoot>
-    </table>
+        </tbody>
+        <tfoot>
+          <tr v-if="gameType === 'cumulated'" class="sum">
+            <td>&nbsp;</td>
+            <td v-for="(name, index) in names">{{ getSum(index) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
     <button type="button" @click="results.push([null, null])">Add</button>
   </MainLayout>
 </template>
@@ -61,13 +63,19 @@ const getSum = (index: number) => results.value.reduce((sum, value) => sum + (va
 </script>
 
 <style lang="scss" scoped>
+.table-wrapper {
+  overflow: hidden;
+  padding: 0.8rem;
+  width: 100%;
+}
+
 table {
   background-color: #eee;
   border-radius: 0.2rem;
   border-spacing: 0;
   color: #2e2737;
-  margin: 0.8rem 0;
-  max-width: 100%;
+  white-space: nowrap;
+  width: 100%;
 
   th,
   td {
@@ -92,14 +100,16 @@ table {
 
   input {
     all: unset;
+    height: 100%;
+    width: 100%;
   }
 
   button {
     all: unset;
-    display: block;
+    /* display: block; */
     font-size: 1.4rem;
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
   }
 }
 </style>
