@@ -43,7 +43,7 @@
         </tfoot>
       </table>
     </div>
-    <button type="button" @click="results.push([null, null])">Add</button>
+    <FloatingButton @onClick="results.push([null, null])" />
   </MainLayout>
 </template>
 
@@ -51,6 +51,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import MainLayout from '~/components/MainLayout/MainLayout.vue';
+import FloatingButton from '~/components/FloatingButton/FloatingButton.vue';
 
 const router = useRouter();
 const gameName = (router.currentRoute.value.query.gameName as string) ?? 'Custom Game';
