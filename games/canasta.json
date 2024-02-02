@@ -1,0 +1,33 @@
+{
+  "name": "Canasta",
+  "isRoundBased": true,
+  "players": {
+    "type": "teams",
+    "num": 2
+  },
+  "fields": [
+    {
+      "type": "score"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Sum",
+      "type": "sumField"
+    },
+    {
+      "name": "needed:",
+      "type": "infoField",
+      "rules": [
+        { "field": "Sum", "comparison": "<", "value": 0, "info": "15" },
+        { "field": "Sum", "comparison": "<", "value": 1500, "info": "60" },
+        { "field": "Sum", "comparison": "<", "value": 3000, "info": "90" }
+      ],
+      "default": "120"
+    }
+  ],
+  "winningRules": {
+    "field": "Sum",
+    "minScore": 1500
+  }
+}

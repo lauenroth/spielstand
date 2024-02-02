@@ -7,7 +7,7 @@ export default defineI18nConfig(() => ({
       language: 'Sprache',
       players: 'Spieler',
       teams: 'Teams',
-      newGame: 'Neues Spiel',
+      newGame: 'Custom Spiel',
       startNewGame: 'Neues Spiel starten',
     },
     en: {
@@ -15,7 +15,7 @@ export default defineI18nConfig(() => ({
       language: 'Language',
       players: 'Players',
       teams: 'Teams',
-      newGame: 'New Game',
+      newGame: 'Custom Game',
       startNewGame: 'Start New Game',
     },
   },

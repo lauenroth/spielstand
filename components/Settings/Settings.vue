@@ -1,7 +1,7 @@
 <template>
   <aside :class="{ show }">
     <header>
-      <p>My Name</p>
+      <p>{{ name }}</p>
       <div class="avatar"></div>
     </header>
     <div id="language-switcher">
@@ -28,6 +28,8 @@ const setLanguage = (lang: string) => {
   setLocale(lang);
   emits('onClose');
 };
+
+const name = ref('Profile');
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +50,7 @@ aside {
   }
 
   h3 {
-    font-size: 22px;
+    font-size: 1.4rem;
     font-weight: normal;
     margin: 0;
     padding: 12px;
@@ -73,6 +75,10 @@ aside {
     padding: 0 0.5rem;
   }
 
+  p {
+    font-size: 1.4rem;
+  }
+
   .avatar {
     background-color: #aaa;
     border-radius: 50%;
@@ -83,14 +89,13 @@ aside {
   #language-switcher {
     ul {
       display: flex;
-      gap: 12px;
-      justify-content: space-evenly;
+      gap: 1rem;
       margin: 0 12px;
     }
 
     button {
-      font-size: 18px;
-      min-width: 120px;
+      font-size: 1rem;
+      min-width: 7rem;
       padding: 6px 12px;
     }
   }
