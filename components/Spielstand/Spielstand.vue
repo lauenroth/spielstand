@@ -1,4 +1,3 @@
-import type InfoFieldVue from '../Fields/InfoField/InfoField.vue';
 <template>
   <div class="table-wrapper">
     <table>
