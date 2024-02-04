@@ -1,7 +1,7 @@
 <template>
   <tr class="info" :class="{ footer: isFooter }">
     <td>{{ field.name }}</td>
-    <td v-for="index in gameStore.results[0]">{{ field.default }}</td>
+    <td v-for="index in gameStore.results[0]" :key="`info-field-${index}`">{{ field.default }}</td>
   </tr>
 </template>
 
@@ -20,6 +20,9 @@ const gameStore = useGameStore();
 </script>
 
 <style lang="scss" scoped>
+.info {
+  display: none;
+}
 .footer td {
   background-color: transparent;
   color: #eee;
