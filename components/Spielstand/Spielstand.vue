@@ -7,48 +7,58 @@
       <thead>
         <tr>
           <th class="round"></th>
-          <th v-for="name in gameStore.players">{{ name }}</th>
+          <th v-for="(name, index) in gameStore.players" :key="`playername-${index}`">{{ name }}</th>
         </tr>
       </thead>
       <tbody>
-        <template v-if="gameStore.game.isRoundBased">
-          <tr v-for="(result, index) in gameStore.results">
+        <template v-if="gameStore.game?.isRoundBased">
+          <tr v-for="(result, index) in gameStore.results" :key="`result-line-${index}`">
             <td>{{ index + 1 }}</td>
-            <td v-for="(_score, scoreIndex) in result">
+            <td v-for="(_score, scoreIndex) in result" :key="`result-${index}-${scoreIndex}`">
               <input
                 type="number"
                 value="score"
-                @change="
-                  event => {
-                    gameStore.results[index][scoreIndex] = Number(event.target.value);
-                  }
-                "
+                @change="event => {
+                    gameStore.results[index][scoreIndex] = Number(event.target?.value);
+                }"
               />
             </td>
           </tr>
         </template>
       </tbody>
       <tfoot>
-        <template v-for="field in gameStore.game.footer">
+        <template v-for="(field, index) in gameStore.game?.footer" :key="`footer-field-${index}`">
           <InfoField v-if="field.type === 'infoField'" :field="field" isFooter />
+          <SumField v-else-if="field.type === 'sumField'" :field="field" isFooter/>
           <tr v-else>
-            <td>unknown</td>
+            <td>unknown:<br /> {{ field.type }}</td>
           </tr>
         </template>
       </tfoot>
     </table>
   </div>
-  <FloatingButton @onClick="gameStore.results.push([null, null])" />
+  <FloatingButton @onClick="addNewResultLine" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import FloatingButton from '~/components/FloatingButton/FloatingButton.vue';
 import InfoField from '~/components/Fields/InfoField/InfoField.vue';
+import SumField from '~/components/Fields/SumField/SumField.vue';
 import useGameStore from '~/store/game';
 import type { Game } from '~/types/games';
 
 const gameStore = useGameStore();
+
+const addNewResultLine = () => {
+  gameStore.results.push([null, null]);
+}
+
+onBeforeMount(() => {
+  if (gameStore.results.length === 0) {
+    addNewResultLine();
+  }
+});
 
 // const results = ref<(number | null)[][]>([[null, null]]);
 </script>

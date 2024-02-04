@@ -17,7 +17,7 @@ export interface FieldRule {
 
 export interface InfoField {
   name: string;
-  type: 'sumField';
+  type: 'infoField';
   default?: string;
   rules: FieldRule[];
 }

@@ -14,11 +14,9 @@ interface InfoFieldProps {
   isFooter?: boolean;
 }
 
-const props = defineProps<InfoFieldProps>();
+defineProps<InfoFieldProps>();
 
 const gameStore = useGameStore();
-
-console.log(props);
 </script>
 
 <style lang="scss" scoped>

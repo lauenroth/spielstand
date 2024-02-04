@@ -100,6 +100,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-height: 100vh;
   min-height: 100dvh;
   padding-top: 62px;
 }

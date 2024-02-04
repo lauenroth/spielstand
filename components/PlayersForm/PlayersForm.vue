@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="gameStore.players = names">
     <h2>Please define the {{ playerType }}:</h2>
-    <p v-for="number in amount">
+    <p v-for="number in amount" :key="`playerform.${number}`">
       <label :for="`name-${number}`">Name {{ number }}</label>
       <input type="text" :name="`name`" :id="`name-${number}`" v-model="names[number - 1]" required />
     </p>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import useGameStore from '~/store/game';
 import type { PlayersType } from '~/types/games';
 
@@ -19,10 +19,16 @@ interface PlayersFormProps {
   playerType: PlayersType;
 }
 
-defineProps<PlayersFormProps>();
+const props = defineProps<PlayersFormProps>();
 
 const gameStore = useGameStore();
 const names = ref<string[]>([]);
+
+onBeforeMount(() => {
+  for (let index = 1; index <= props.amount; index += 1) {
+    names.value.push(`Team ${index}`)
+  }
+});
 </script>
 
 <style lang="scss" scoped>
